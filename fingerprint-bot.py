@@ -17,6 +17,7 @@ async def on_ready():
   change_status.start()
   print('Hello, I\'m online')
 
+
 #On error Command
 @bot.event
 async def on_command_error(ctx,error):
@@ -28,6 +29,49 @@ async def on_command_error(ctx,error):
     await ctx.message.delete()
   else:
     raise error
+
+
+config = {
+    "apiKey": "AIzaSyDZpGc9E2BhD_XMJcYlir2c_bRVoL--hJw",
+    "authDomain": "fingerprint-za.firebaseapp.com",
+    "databaseURL": "https://fingerprint-za-default-rtdb.europe-west1.firebasedatabase.app",
+    "projectId": "fingerprint-za",
+    "storageBucket": "fingerprint-za.appspot.com",
+    "messagingSenderId": "1099288539318",
+    "appId": "1:1099288539318:web:5944ddd1eb25e0b58c7617",
+    "measurementId": "G-5L8EW2MW4R"
+}
+
+
+@bot.command
+async def info(ctx):
+  firebase = pyrebase.initialize_app(config)
+  database = firebase.database()
+  rootRef = database.child('users/CS').get()
+  data = rootRef.val()
+
+  ctx = ctx.upper()
+
+  try:
+    myplayer = data[ctx]
+    await ctx.send('Showing Results for ' + myplayer)
+    keyboard = myplayer['keyboard']
+    mouse = myplayer['mouse']
+    cpu = myplayer['cpu']
+    gpu = myplayer['gpu']
+    headset = myplayer['headset']
+    resolution = myplayer['res']
+    monitor = myplayer['monitor']
+    ram = myplayer['monitor']
+    sens = myplayer['sens']
+    signed = myplayer['signed']
+    main_social = myplayer['main_social']
+    player_info = myplayer['info']
+  except KeyError:
+    await ctx.send('User ' + ctx + ' does not exist, contact support !')
+
+
+
 
 #Auto Role Command
 @bot.event
