@@ -5,11 +5,12 @@ import pyrebase
 from discord import Color
 from discord.ext import commands, tasks
 from itertools import cycle
+import time
 
 
 #Set Prefix
 bot = commands.Bot(command_prefix = '!') 
-status = cycle(['https://fingerprintza.com/', 'Bot created by MrT1TAN#3244'])
+status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza'])
 
 #Set Message when Bot is online
 @bot.event 
@@ -91,6 +92,26 @@ async def player(ctx,player='ultrafy'):
   
 
   await ctx.send(embed=embed)
+
+
+@bot.command() 
+async def users(ctx):
+  firebase = pyrebase.initialize_app(config)
+  database = firebase.database()
+  rootRef = database.child('users/CS').get()
+  data = rootRef.val()
+  await ctx.send('Getting Players!', delete_after=3.0)
+  embed = discord.embed(
+    title = 'Players',
+    description = 'List of all Counterstrike Players in out Database',
+    colour = discord.colour.teal()
+  )
+  for i in data:
+    embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
+    embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
+    embed.add_field(name= '**__Player:__**' , value= i, inline=False)
+    await ctx.send(embed=embed)
+    time.sleep(2)
 
 
 
