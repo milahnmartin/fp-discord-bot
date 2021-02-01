@@ -27,10 +27,13 @@ async def on_command_error(ctx,error):
   elif isinstance(error,commands.MissingRequiredArgument):
     await ctx.send('Please enter all the required arguements ⌨️', delete_after = 5)
     await ctx.message.delete()
+  elif isinstance(error,commands.CommandInvokeError):
+    await ctx.send('Player Does not exist 😕', delete_after = 5)
+    await ctx.message.delete()
   else:
     raise error
 
-
+#Gets Information from Firebase
 config = {
     "apiKey": "AIzaSyDZpGc9E2BhD_XMJcYlir2c_bRVoL--hJw",
     "authDomain": "fingerprint-za.firebaseapp.com",
@@ -43,32 +46,52 @@ config = {
 }
 
 
-@bot.command
-async def info(ctx):
+#Embedded Player info
+@bot.command() 
+async def player(ctx,player='ultrafy'):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
   rootRef = database.child('users/CS').get()
   data = rootRef.val()
 
-  ctx = ctx.upper()
+  playerU = player.upper()
 
-  try:
-    myplayer = data[ctx]
-    await ctx.send('Showing Results for ' + myplayer)
-    keyboard = myplayer['keyboard']
-    mouse = myplayer['mouse']
-    cpu = myplayer['cpu']
-    gpu = myplayer['gpu']
-    headset = myplayer['headset']
-    resolution = myplayer['res']
-    monitor = myplayer['monitor']
-    ram = myplayer['monitor']
-    sens = myplayer['sens']
-    signed = myplayer['signed']
-    main_social = myplayer['main_social']
-    player_info = myplayer['info']
-  except KeyError:
-    await ctx.send('User ' + ctx + ' does not exist, contact support !')
+  #try:
+  myplayer = data[playerU]
+    #await ctx.send('Showing Results for ' + myplayer)
+  keyboard = myplayer['keyboard']
+  mouse = myplayer['mouse']
+  cpu = myplayer['cpu']
+  gpu = myplayer['gpu']
+  headset = myplayer['headset']
+  resolution = myplayer['res']
+  monitor = myplayer['monitor']
+  ram = myplayer['ram']
+  sens = myplayer['sens']
+  signed = myplayer['signed']
+  main_social = myplayer['main_social']
+  player_info = myplayer['info']
+  #except KeyError:
+  # await ctx.send('User ' + myplayer + ' does not exist, contact support !')
+
+  await ctx.send('Busy fetching data!', delete_after=3.0)  
+  embed = discord.Embed(
+    title = 'Player Information', 
+    description = 'All Available data about the player is stated below.',
+    colour = discord.Colour.teal()
+  )
+
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
+  embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
+  embed.add_field(name= '**__Player:__**' , value= player, inline=False)
+  embed.add_field(name= '**__Player Information__**' , value= '**About:** ' + player_info + '\n**Player Team:** ' + signed + '\n**Social Media:** ' + main_social, inline=False)
+  embed.add_field(name= '**__PC Specifications__**' , value= '**CPU:** ' + cpu + '\n**GPU:** ' + gpu + '\n**RAM:** ' + ram + '\n**MONITOR:** ' + monitor, inline=False)
+  embed.add_field(name= '**__Periphirals__**' , value= '**Keyboard:** ' + keyboard + '\n**Mouse:** ' + mouse + '\n**Headset:** ' + headset , inline=False)
+  embed.add_field(name= '**__Settings__**' , value= '**Mouse Sensitivity:** ' + sens + '\n**Resolution:** ' + resolution , inline=False)
+  
+
+  await ctx.send(embed=embed)
+
 
 
 
@@ -116,22 +139,6 @@ async def Testing2(ctx):
     colour = discord.Colour.blue()
   )
   await ctx.send(embed=embed)
-
-
-#Embeds
-@bot.command() 
-async def ebmsg(ctx, ebtitle='Default'):
-  embed = discord.Embed(
-    title = ebtitle, 
-    description =  '',
-    colour = discord.Colour.red()
-  )
-  embed.set_author(name= '')
-  embed.set_footer(text='Made by MrT1TAN#3244')
-  #embed.set_thumbnail(url='.png')
-  embed.add_field(name='Tesxt', value='asd', inline=False)
-  await ctx.send(embed=embed)
-
 
 #StatusgreenCommand
 @bot.command() 
