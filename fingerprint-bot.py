@@ -101,16 +101,9 @@ async def users(ctx):
   rootRef = database.child('users/CS').get()
   data = rootRef.val()
   await ctx.send('Getting Players!', delete_after=3.0)
-  embed = discord.embed(
-    title = 'Players',
-    description = 'List of all Counterstrike Players in out Database',
-    colour = discord.colour.teal()
-  )
+  await ctx.send('***Players :***')
   for i in data:
-    embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
-    embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
-    embed.add_field(name= '**__Player:__**' , value= i, inline=False)
-    await ctx.send(embed=embed)
+    await ctx.send('`'+i+'`')
     time.sleep(2)
 
 
