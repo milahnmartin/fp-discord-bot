@@ -52,7 +52,7 @@ config = {
 async def player(ctx,player='ultrafy'):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
-  rootRef = database.child('users/CS').get()
+  rootRef = database.child('counterstrike/pro').get()
   data = rootRef.val()
 
   playerU = player.upper()
@@ -62,16 +62,21 @@ async def player(ctx,player='ultrafy'):
     #await ctx.send('Showing Results for ' + myplayer)
   keyboard = myplayer['keyboard']
   mouse = myplayer['mouse']
-  cpu = myplayer['cpu']
-  gpu = myplayer['gpu']
+  age = myplayer['age']
+  fullname = myplayer['fullname']
   headset = myplayer['headset']
-  resolution = myplayer['res']
+  resolution = myplayer['resolution']
   monitor = myplayer['monitor']
-  ram = myplayer['ram']
-  sens = myplayer['sens']
-  signed = myplayer['signed']
-  main_social = myplayer['main_social']
-  player_info = myplayer['info']
+  monitor_hz = myplayer['monitor_hz']
+  raw_input = myplayer['raw_input']
+  sens = myplayer['sensitivity']
+  team = myplayer['team']
+  aspect_ratio = myplayer['aspect_ratio']
+  dpi = myplayer['dpi']
+  scaling_mode = myplayer['scaling_mode']
+  zoom_sens = myplayer['zoom_sens']
+  gamertag = myplayer['gamertag']
+  crosshair_code = myplayer['crosshair_code']
   #except KeyError:
   # await ctx.send('User ' + myplayer + ' does not exist, contact support !')
 
@@ -84,11 +89,12 @@ async def player(ctx,player='ultrafy'):
 
   embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
-  embed.add_field(name= '**__Player:__**' , value= player, inline=False)
-  embed.add_field(name= '**__Player Information__**' , value= '**About:** ' + player_info + '\n**Player Team:** ' + signed + '\n**Social Media:** ' + main_social, inline=False)
-  embed.add_field(name= '**__PC Specifications__**' , value= '**CPU:** ' + cpu + '\n**GPU:** ' + gpu + '\n**RAM:** ' + ram + '\n**MONITOR:** ' + monitor, inline=False)
-  embed.add_field(name= '**__Periphirals__**' , value= '**Keyboard:** ' + keyboard + '\n**Mouse:** ' + mouse + '\n**Headset:** ' + headset , inline=False)
-  embed.add_field(name= '**__Settings__**' , value= '**Mouse Sensitivity:** ' + sens + '\n**Resolution:** ' + resolution , inline=False)
+  embed.add_field(name= '**__Player:__**' , value= gamertag, inline=False)
+  embed.add_field(name= '**__Player Information__**' , value= '**FullName:** ' + fullname + '\n**Player Team:** ' + team + '\n**Age:** ' + age, inline=False)
+  embed.add_field(name= '**__Mouse Settings__**' , value= '**DPI:** ' + dpi + '\n**Sensitivity:** ' + sens + '\n**Raw Input:** ' + raw_input + '\n**Zoom Sensitivity:** ' + zoom_sens, inline=False)
+  embed.add_field(name= '**__Monitor Settings__**' , value= '**Resolution:** ' + resolution + '\n**Aspect Ratio:** ' + aspect_ratio + '\n**Scaling Mode:** ' + scaling_mode + '\n**Hz:** ' +monitor_hz, inline=False)
+  embed.add_field(name= '**__Crosshair__**' , value= '**Crosshair Code:** ' + crosshair_code , inline=False)
+  embed.add_field(name= '**__Gear__**' , value= '**Monitor:** ' + monitor + '\n**Mouse:** ' + mouse + '\n**Keyboard:** ' + keyboard + '\n**Headset:** ' + headset, inline=False)
   
 
   await ctx.send(embed=embed)
