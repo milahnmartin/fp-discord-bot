@@ -49,7 +49,7 @@ config = {
 
 #Embedded Player info
 @bot.command() 
-async def player(ctx,player='psykie'):
+async def player(ctx,player='ultrafy'):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
   rootRef = database.child('counterstrike/pro').get()
