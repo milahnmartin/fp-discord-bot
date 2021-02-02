@@ -49,7 +49,7 @@ config = {
 
 #Embedded Player info
 @bot.command() 
-async def player(ctx,player='ultrafy'):
+async def player(ctx,player='psykie'):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
   rootRef = database.child('counterstrike/pro').get()
@@ -104,7 +104,7 @@ async def player(ctx,player='ultrafy'):
 async def users(ctx):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
-  rootRef = database.child('users/CS').get()
+  rootRef = database.child('counterstrike/pro').get()
   data = rootRef.val()
   await ctx.send('Getting Players!', delete_after=3.0)
   await ctx.send('***Players :***')
