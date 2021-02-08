@@ -77,8 +77,8 @@ async def player(ctx,player='ultrafy'):
   zoom_sens = myplayer['zoom_sens']
   gamertag = myplayer['gamertag']
   crosshair_code = myplayer['crosshair_code']
-  faceit = myplayer['faceit']
-  esea = myplayer['esea']
+  # faceit = myplayer['faceit']
+  # esea = myplayer['esea']
   #except KeyError:
   # await ctx.send('User ' + myplayer + ' does not exist, contact support !')
 
@@ -97,7 +97,7 @@ async def player(ctx,player='ultrafy'):
   embed.add_field(name= '**__Monitor Settings__**' , value= '**Resolution:** ' + resolution + '\n**Aspect Ratio:** ' + aspect_ratio + '\n**Scaling Mode:** ' + scaling_mode + '\n**Hz:** ' +monitor_hz, inline=False)
   embed.add_field(name= '**__Crosshair__**' , value= '**Crosshair Code:** ' + crosshair_code , inline=False)
   embed.add_field(name= '**__Gear__**' , value= '**Monitor:** ' + monitor + '\n**Mouse:** ' + mouse + '\n**Keyboard:** ' + keyboard + '\n**Headset:** ' + headset, inline=False)
-  embed.add_field(name= '**__Profiles__**', value= '**Faceit:** ' + faceit + '\n**ESEA:** ' + esea, inline=False)
+  # embed.add_field(name= '**__Profiles__**', value= '**Faceit:** ' + faceit + '\n**ESEA:** ' + esea, inline=False)
 
   await ctx.send(embed=embed)
 
@@ -113,7 +113,6 @@ async def users(ctx):
   for i in data:
     await ctx.send('`'+i+'`')
     time.sleep(2)
-
 
 
 
