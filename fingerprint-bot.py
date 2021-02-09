@@ -126,8 +126,8 @@ async def commands(ctx):
 
   embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
-  embed.add_field(name= '**__.players:__**' , value= Shows All Players In Database, inline=False)
-  embed.add_field(name= '**__.player + "player name"__**' , value= Shows Player Specified After .player Info, inline=False)
+  embed.add_field(name= '**__.players:__**' , value= 'Shows All Players In Database', inline=False)
+  embed.add_field(name= '**__.player + "player name"__**' , value= 'Shows Player Specified After .player Info', inline=False)
 
 
   await ctx.send(embed=embed)
