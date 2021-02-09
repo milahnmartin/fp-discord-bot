@@ -116,8 +116,8 @@ async def players(ctx):
 
 
 @bot.command()
-async def fingerprintcommands(ctx,aliases =['commands','command']):
-  await ctx.send('Busy fetching data!', delete_after=3.0)  
+async def fingerprintcommands(ctx):
+  await ctx.send('Getting Commands!', delete_after=3.0)  
   embed = discord.Embed(
     title = 'Commands', 
     description = 'All Available Commands.',
