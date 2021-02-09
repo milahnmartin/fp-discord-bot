@@ -116,7 +116,7 @@ async def players(ctx):
 
 
 @bot.command()
-async def commands(ctx):
+async def usercommands(ctx):
   await ctx.send('Busy fetching data!', delete_after=3.0)  
   embed = discord.Embed(
     title = 'Commands', 
