@@ -9,14 +9,14 @@ import time
 
 
 #Set Prefix
-bot = commands.Bot(command_prefix = '!') 
+bot = commands.Bot(command_prefix = '.') 
 status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza'])
 
 #Set Message when Bot is online
 @bot.event 
 async def on_ready():
   change_status.start()
-  print('Hello, I\'m online')
+  print('Main Fingerprint ZA Bot is Online !')
 
 
 #On error Command
@@ -103,7 +103,7 @@ async def player(ctx,player='ultrafy'):
 
 
 @bot.command() 
-async def users(ctx):
+async def players(ctx):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
   rootRef = database.child('counterstrike/pro').get()
@@ -113,6 +113,25 @@ async def users(ctx):
   for i in data:
     await ctx.send('`'+i+'`')
     time.sleep(2)
+
+
+@bot.command()
+async def commands(ctx):
+  await ctx.send('Busy fetching data!', delete_after=3.0)  
+  embed = discord.Embed(
+    title = 'Commands', 
+    description = 'All Available Commands.',
+    colour = discord.Colour.teal()
+  )
+
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
+  embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
+  embed.add_field(name= '**__.players:__**' , value= Shows All Players In Database, inline=False)
+  embed.add_field(name= '**__.player + "player name"__**' , value= Shows Player Specified After .player Info, inline=False)
+
+
+  await ctx.send(embed=embed)
+
 
 
 
