@@ -10,7 +10,7 @@ import time
 
 #Set Prefix
 bot = commands.Bot(command_prefix = '.') 
-status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza'])
+status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-cs'])
 
 #Set Message when Bot is online
 @bot.event 
@@ -116,7 +116,7 @@ async def players(ctx):
 
 
 @bot.command()
-async def usercommands(ctx):
+async def fingerprintcommands(ctx,aliases =['commands','command']):
   await ctx.send('Busy fetching data!', delete_after=3.0)  
   embed = discord.Embed(
     title = 'Commands', 
