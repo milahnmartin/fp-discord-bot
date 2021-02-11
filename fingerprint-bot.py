@@ -17,7 +17,11 @@ status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza'
 async def on_ready():
   change_status.start()
   print('Main Fingerprint ZA Bot is Online !')
-
+ 
+  
+@bot.command()
+async def clear(ctx, amount=3):
+  await ctx.channel.purge(limit=amount)
 
 #On error Command
 @bot.event
