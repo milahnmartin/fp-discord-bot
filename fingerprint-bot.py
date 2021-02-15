@@ -22,6 +22,7 @@ async def on_ready():
 @bot.command()
 async def clear(ctx, amount=3):
   await ctx.channel.purge(limit=amount)
+  await ctx.send('**__Cleared__**',amount)
 
 #On error Command
 @bot.event
