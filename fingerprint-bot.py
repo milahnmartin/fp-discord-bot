@@ -10,7 +10,7 @@ import time
 
 #Set Prefix
 bot = commands.Bot(command_prefix = '.') 
-status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-cs'])
+status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-cs','Our Prefix is . try .fingerprintcommands'])
 
 #Set Message when Bot is online
 @bot.event 
@@ -132,6 +132,7 @@ async def fingerprintcommands(ctx):
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
   embed.add_field(name= '**__.players:__**' , value= 'Shows All Players In Database', inline=False)
   embed.add_field(name= '**__.player + "player name"__**' , value= 'Shows Player Specified After .player Info', inline=False)
+  embed.add_field(name= '**__.clear__** + **__amount__**' , value= 'Clears Specific amount of lines', inline=False)
 
 
   await ctx.send(embed=embed)
