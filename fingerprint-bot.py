@@ -53,7 +53,7 @@ config = {
 
 #Embedded Player info
 @bot.command() 
-async def player(ctx,player='ultrafy'):
+async def cs(ctx,player='ultrafy'):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
   rootRef = database.child('counterstrike/pro').get()
@@ -100,6 +100,66 @@ async def player(ctx,player='ultrafy'):
   embed.add_field(name= '**__Mouse Settings__**' , value= '**DPI:** ' + dpi + '\n**Sensitivity:** ' + sens + '\n**Raw Input:** ' + raw_input + '\n**Zoom Sensitivity:** ' + zoom_sens, inline=False)
   embed.add_field(name= '**__Monitor Settings__**' , value= '**Resolution:** ' + resolution + '\n**Aspect Ratio:** ' + aspect_ratio + '\n**Scaling Mode:** ' + scaling_mode + '\n**Hz:** ' +monitor_hz, inline=False)
   embed.add_field(name= '**__Crosshair__**' , value= '**Crosshair Code:** ' + crosshair_code , inline=False)
+  embed.add_field(name= '**__Gear__**' , value= '**Monitor:** ' + monitor + '\n**Mouse:** ' + mouse + '\n**Keyboard:** ' + keyboard + '\n**Headset:** ' + headset, inline=False)
+  # embed.add_field(name= '**__Profiles__**', value= '**Faceit:** ' + faceit + '\n**ESEA:** ' + esea, inline=False)
+
+  await ctx.send(embed=embed)
+
+  @bot.command() 
+async def fortnite(ctx,player='ultrafy'):
+  firebase = pyrebase.initialize_app(config)
+  database = firebase.database()
+  rootRef = database.child('fortnite/pro').get()
+  data = rootRef.val()
+
+  playerU = player.upper()
+
+  #try:
+  myplayer = data[playerU]
+    #await ctx.send('Showing Results for ' + myplayer)
+  keyboard = myplayer['keyboard']
+  mouse = myplayer['mouse']
+  age = myplayer['age']
+  fullname = myplayer['fullname']
+  headset = myplayer['headset']
+  resolution = myplayer['resolution']
+  monitor = myplayer['monitor']
+  monitor_hz = myplayer['monitor_hz']
+  color_blind_mode = myplayer['color_blind_mode']
+  sens = myplayer['sensitivity']
+  team = myplayer['team']
+  vsyncc = myplayer['vsyncc']
+  dpi = myplayer['dpi']
+  brightness = myplayer['brightness']
+  scope_sens = myplayer['scope_sens']
+  gamertag = myplayer['gamertag']
+  fortnite_tracker = myplayer['fortnite_tracker']
+  #binds
+  ramp_bind = myplayer['ramp_bind']
+  wall_bind = myplayer['wall_bind']
+  cone_bind = myplayer['cone_bind']
+  edit_bind = myplayer['edit_bind']
+  floor_bind = myplayer['floor_bind']
+  edit_release = myplayer['edit_release']
+  # faceit = myplayer['faceit']
+  # esea = myplayer['esea']
+  #except KeyError:
+  # await ctx.send('User ' + myplayer + ' does not exist, contact support !')
+
+  await ctx.send('Busy fetching data!', delete_after=3.0)  
+  embed = discord.Embed(
+    title = 'Player Information', 
+    description = 'All Available data about the player is stated below.',
+    colour = discord.Colour.teal()
+  )
+
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
+  embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
+  embed.add_field(name= '**__Player:__**' , value= gamertag, inline=False)
+  embed.add_field(name= '**__Player Information__**' , value= '**FullName:** ' + fullname + '\n**Player Team:** ' + team + '\n**Age:** ' + age, inline=False)
+  embed.add_field(name= '**__Mouse Settings__**' , value= '**DPI:** ' + dpi + '\n**Sensitivity:** ' + sens + '\n**Scope Sensitivity:** ' + scope_sens, inline=False)
+  embed.add_field(name= '**__Monitor Settings__**' , value= '**Resolution:** ' + resolution + '\n**Color Blind Mode:** ' + color_blind_mode + '\n**Brightness:** ' + brightness + '\n**Hz:** ' +monitor_hz, inline=False)
+  embed.add_field(name= '**__Fortnite Binds__**' , value= '**Ramp Bind:** ' + ramp_bind + '\n**Cone Bind:** ' + cone_bind + '\n**Floor Bind:** ' + floor_bind + '\n**Wall Bind:** ' + wall_bind +, inline=False)
   embed.add_field(name= '**__Gear__**' , value= '**Monitor:** ' + monitor + '\n**Mouse:** ' + mouse + '\n**Keyboard:** ' + keyboard + '\n**Headset:** ' + headset, inline=False)
   # embed.add_field(name= '**__Profiles__**', value= '**Faceit:** ' + faceit + '\n**ESEA:** ' + esea, inline=False)
 
