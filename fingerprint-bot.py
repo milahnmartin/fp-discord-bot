@@ -105,7 +105,7 @@ async def cs(ctx,player='ultrafy'):
 
   await ctx.send(embed=embed)
 
-  @bot.command() 
+@bot.command() 
 async def fortnite(ctx,player='ultrafy'):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
