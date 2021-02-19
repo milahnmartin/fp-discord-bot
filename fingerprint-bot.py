@@ -190,8 +190,9 @@ async def fingerprintcommands(ctx):
 
   embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
-  embed.add_field(name= '**__.players:__**' , value= 'Shows All Players In Database', inline=False)
-  embed.add_field(name= '**__.player + "player name"__**' , value= 'Shows Player Specified After .player Info', inline=False)
+  embed.add_field(name= '**__.players:__**' , value= 'Shows All CS Players In Database', inline=False)
+  embed.add_field(name= '**__.fortnite + "player name"__**' , value= 'Shows Fortnite Player Specified After .fortnite Info', inline=False)
+  embed.add_field(name= '**__.cs + "player name"__**' , value= 'Shows CS Player Specified After .cs Info', inline=False)
   embed.add_field(name= '**__.clear__** + **__amount__**' , value= 'Clears Specific amount of lines', inline=False)
 
 
