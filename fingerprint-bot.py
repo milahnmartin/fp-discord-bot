@@ -159,7 +159,7 @@ async def fortnite(ctx,player='ultrafy'):
   embed.add_field(name= '**__Player Information__**' , value= '**FullName:** ' + fullname + '\n**Player Team:** ' + team + '\n**Age:** ' + age, inline=False)
   embed.add_field(name= '**__Mouse Settings__**' , value= '**DPI:** ' + dpi + '\n**Sensitivity:** ' + sens + '\n**Scope Sensitivity:** ' + scope_sens, inline=False)
   embed.add_field(name= '**__Monitor Settings__**' , value= '**Resolution:** ' + resolution + '\n**Color Blind Mode:** ' + color_blind_mode + '\n**Brightness:** ' + brightness + '\n**Hz:** ' +monitor_hz, inline=False)
-  embed.add_field(name= '**__Fortnite Binds__**' , value= '**Ramp Bind:** ' + ramp_bind + '\n**Cone Bind:** ' + cone_bind + '\n**Floor Bind:** ' + floor_bind + '\n**Wall Bind:** ' + wall_bind +, inline=False)
+  embed.add_field(name= '**__Fortnite Binds__**' , value= '**Ramp Bind:** ' + ramp_bind + '\n**Cone Bind:** ' + cone_bind + '\n**Floor Bind:** ' + floor_bind + '\n**Wall Bind:** ' + wall_bind , inline=False)
   embed.add_field(name= '**__Gear__**' , value= '**Monitor:** ' + monitor + '\n**Mouse:** ' + mouse + '\n**Keyboard:** ' + keyboard + '\n**Headset:** ' + headset, inline=False)
   # embed.add_field(name= '**__Profiles__**', value= '**Faceit:** ' + faceit + '\n**ESEA:** ' + esea, inline=False)
 
