@@ -18,10 +18,6 @@ async def on_ready():
   change_status.start()
   print('Main Fingerprint ZA Bot is Online !')
  
-  
-@bot.command()
-async def clear(ctx, amount=3):
-  await ctx.channel.purge(limit=amount)
 
 #On error Command
 @bot.event
@@ -222,7 +218,7 @@ async def on_raw_reaction_add(payload):
         print('Member not found.')
 
 #Purge command
-@bot.command(aliases =['p'])
+@bot.command(aliases =['p','clear','delete'])
 async def purge(ctx, amount = 5):
  await ctx.channel.purge(limit=amount)
  await ctx.send(str(amount) + ' messages deleted!!', delete_after = 5)
