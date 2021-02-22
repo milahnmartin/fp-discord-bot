@@ -11,6 +11,7 @@ import time
 #Set Prefix
 bot = commands.Bot(command_prefix = '.') 
 status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-cs','Our Prefix is . try .fingerprintcommands'])
+emojiF = ('<:Fingerprint:813383545065439253>')
 
 #Set Message when Bot is online
 @bot.event 
@@ -89,7 +90,7 @@ async def cs(ctx,player='ultrafy'):
     colour = discord.Colour.teal()
   )
 
-  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza | Sponsored by: TINTFORMULAE')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
   embed.add_field(name= '**__Player:__**' , value= gamertag, inline=False)
   embed.add_field(name= '**__Player Information__**' , value= '**FullName:** ' + fullname + '\n**Player Team:** ' + team + '\n**Age:** ' + age, inline=False)
@@ -149,7 +150,7 @@ async def fortnite(ctx,player='ultrafy'):
     colour = discord.Colour.teal()
   )
 
-  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza | Sponsored by: TINTFORMULAE')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
   embed.add_field(name= '**__Player:__**' , value= gamertag, inline=False)
   embed.add_field(name= '**__Player Information__**' , value= '**FullName:** ' + fullname + '\n**Player Team:** ' + team + '\n**Age:** ' + age, inline=False)
@@ -175,7 +176,7 @@ async def players(ctx):
     time.sleep(2)
 
 
-@bot.command()
+@bot.command(aliases =['commands'])
 async def fingerprintcommands(ctx):
   await ctx.send('Getting Commands!', delete_after=3.0)  
   embed = discord.Embed(
@@ -184,7 +185,7 @@ async def fingerprintcommands(ctx):
     colour = discord.Colour.teal()
   )
 
-  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza')
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza | Sponsored by: TINTFORMULAE')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
   embed.add_field(name= '**__.players:__**' , value= 'Shows All CS Players In Database', inline=False)
   embed.add_field(name= '**__.fortnite + "player name"__**' , value= 'Shows Fortnite Player Specified After .fortnite Info', inline=False)
@@ -217,11 +218,18 @@ async def on_raw_reaction_add(payload):
       else:
         print('Member not found.')
 
+
 #Purge command
-@bot.command(aliases =['p','clear','delete'])
-async def purge(ctx, amount = 5):
- await ctx.channel.purge(limit=amount)
- await ctx.send(str(amount) + ' messages deleted!!', delete_after = 5)
+@bot.command(aliases =['p','purge','delete'])
+async def clear(ctx, amount=3):
+    await ctx.channel.purge(limit=amount)
+    embed = discord.Embed(
+     title = 'FingerPrintZa', 
+     description =  'FingerPrintZa Bot Cleared: ' + '`' + str(amount) + '`' + ' messages' + emojiF,
+     colour = discord.Colour.teal()
+  )
+    await ctx.send(embed=embed, delete_after=3.0)
+
 
 
 #Testing Command
