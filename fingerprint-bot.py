@@ -164,10 +164,22 @@ async def fortnite(ctx,player='ultrafy'):
 
 
 @bot.command() 
-async def players(ctx):
+async def counterstrikers(ctx):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
   rootRef = database.child('counterstrike/pro').get()
+  data = rootRef.val()
+  await ctx.send('Getting Players!', delete_after=3.0)
+  await ctx.send('***Players :***')
+  for i in data:
+    await ctx.send('`'+i+'`')
+    time.sleep(2)
+  
+@bot.command() 
+async def fortniters(ctx):
+  firebase = pyrebase.initialize_app(config)
+  database = firebase.database()
+  rootRef = database.child('fortnite/pro').get()
   data = rootRef.val()
   await ctx.send('Getting Players!', delete_after=3.0)
   await ctx.send('***Players :***')
