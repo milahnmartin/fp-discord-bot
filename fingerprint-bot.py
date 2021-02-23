@@ -10,7 +10,7 @@ import time
 
 #Set Prefix
 bot = commands.Bot(command_prefix = '.') 
-status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-cs','Our Prefix is . try .fingerprintcommands'])
+status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-section','.commands'])
 
 #Set Message when Bot is online
 @bot.event 
