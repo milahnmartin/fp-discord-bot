@@ -6,11 +6,13 @@ from discord import Color
 from discord.ext import commands, tasks
 from itertools import cycle
 import time
+import youtube_dl
+import os
 
 
 #Set Prefix
 bot = commands.Bot(command_prefix = '.') 
-status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-cs','Our Prefix is . try .fingerprintcommands'])
+status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-section','Our Prefix is . try .fingerprintcommands'])
 emojiF = ('<:Fingerprint:813383545065439253>')
 
 #Set Message when Bot is online
@@ -264,6 +266,19 @@ async def Statusgreen(ctx):
   embed.add_field(name='**Status:**', value='\n **All ZA FingerPrint Services are currently running** 🟢 ', inline=True)
   await channel.send(embed=embed)
 
+@bot.command()
+async def invite(ctx):
+  embed = discord.Embed(
+    title = 'ZA FingerPrint Status', 
+    description =  'Invite link to invite the bot to your server',
+    colour = discord.Colour.teal()
+  )
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza | Sponsored by: TINTFORMULAE')
+  embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
+  embed.add_field(name='**Invite Link:**', value='\n **https://discord.com/api/oauth2/authorize?client_id=805461368055529502&permissions=0&scope=bot** ', inline=True)
+  await ctx.send(embed=embed)
+
+
 #StatusredCommand
 @bot.command() 
 @commands.has_permissions(manage_messages = True)
@@ -308,4 +323,72 @@ async def Rules(ctx):
 
   msg = await ctx.send(embed=embed)
   await msg.add_reaction('<:agree:805537012161314816>')
+'''
+ #########################################################################################
+ #########################################################################################
+ #########################################################################################
+#########################################################################################
+ #Music
+
+@bot.command()
+async def play(ctx, url : str, channel='Chill Room #1'):
+  song_there = os.path.isfile('song.mp3')
+  try:
+    if song_there:
+      os.remove('song.mp3')
+  except PermissionError:
+    await ctx.send('Wait for current song to end. YOu can use !stop')
+    return
+  #channel = guild.get_channel(‘your-channel-Id’)
+  voiceChannel = discord.utils.get(ctx.guild.voice_channels, name=channel)
+  await voiceChannel.connect()
+  voice = discord.utils.get(bot.voice_clients, guild=ctx.guild)
+  
+
+  ydl_opts = {
+    'format': 'bestaudio/best',
+    'postprocessors': [{
+      'key': 'FFmpegExtractAudio',
+      'preferredcodec': 'mp3',
+      'preferredquality': '192'
+    }],
+  }
+  with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+    ydl.download([url])
+  for file in os.listdir('./'):
+    if file.endswith('.mp3'):
+      os.rename(file, 'song.mp3')
+  
+  voice.play(discord.FFmpegPCMAudio('song.mp3'))
+
+@bot.command()
+async def leave(ctx):
+  voice = discord.utils.get(bot.voice_clients, guild=ctx.guild)
+  if voice.is_connected():
+    await voice.disconnect()
+  else:
+    await ctx.send('The bot is not currently connected to a VC.')
+
+@bot.command()
+async def pause(ctx):
+  voice = discord.utils.get(bot.voice_clients, guild=ctx.guild)
+  if voice.is_playing():
+    voice.pause()
+  else:
+    await ctx.send('No audio is currently playing')
+
+@bot.command()
+async def resume(ctx):
+  voice = discord.utils.get(bot.voice_clients, guild=ctx.guild)
+  if voice.is_paused():
+    voice.resume()
+  else:
+    await ctx.send('No audio is already playing')
+
+@bot.command()
+async def stop(ctx):
+  voice = discord.utils.get(bot.voice_clients, guild=ctx.guild)
+  voice.stop()
+'''
+
 bot.run('ODA1NDYxMzY4MDU1NTI5NTAy.YBbOWg.ga2Xakk4ddaD3m0x7sBN_UIn2GQ')
