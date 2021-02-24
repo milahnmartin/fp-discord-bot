@@ -12,7 +12,7 @@ import os
 
 #Set Prefix
 bot = commands.Bot(command_prefix = '.') 
-status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-section','Our Prefix is . try .fingerprintcommands'])
+status = cycle(['https://fingerprintza.com/', 'Visit our Twitter @fingerprintza', 'Register Today, fingerprintza.com/register-section','.commands'])
 emojiF = ('<:Fingerprint:813383545065439253>')
 
 #Set Message when Bot is online
@@ -168,10 +168,22 @@ async def fortnite(ctx,player='ultrafy'):
 
 
 @bot.command() 
-async def players(ctx):
+async def counterstrikers(ctx):
   firebase = pyrebase.initialize_app(config)
   database = firebase.database()
   rootRef = database.child('counterstrike/pro').get()
+  data = rootRef.val()
+  await ctx.send('Getting Players!', delete_after=3.0)
+  await ctx.send('***Players :***')
+  for i in data:
+    await ctx.send('`'+i+'`')
+    time.sleep(2)
+  
+@bot.command() 
+async def fortniters(ctx):
+  firebase = pyrebase.initialize_app(config)
+  database = firebase.database()
+  rootRef = database.child('fortnite/pro').get()
   data = rootRef.val()
   await ctx.send('Getting Players!', delete_after=3.0)
   await ctx.send('***Players :***')
@@ -191,7 +203,8 @@ async def fingerprintcommands(ctx):
 
   embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza ')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
-  embed.add_field(name= '**__.players:__**' , value= 'Shows All CS Players In Database', inline=False)
+  embed.add_field(name= '**__.counterstrikers:__**' , value= 'Shows All CS Players In Database', inline=False)
+  embed.add_field(name= '**__.fortniters:__**' , value= 'Shows All Fortnite Players In Database', inline=False)
   embed.add_field(name= '**__.fortnite + "player name"__**' , value= 'Shows Fortnite Player Specified After .fortnite Info', inline=False)
   embed.add_field(name= '**__.cs + "player name"__**' , value= 'Shows CS Player Specified After .cs Info', inline=False)
   embed.add_field(name= '**__.clear__** + **__amount__**' , value= 'Clears Specific amount of lines', inline=False)
