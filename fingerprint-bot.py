@@ -100,7 +100,7 @@ async def cs(ctx,player='ultrafy'):
   embed.add_field(name= '**__Monitor Settings__**' , value= '**Resolution:** ' + resolution + '\n**Aspect Ratio:** ' + aspect_ratio + '\n**Scaling Mode:** ' + scaling_mode + '\n**Hz:** ' +monitor_hz, inline=False)
   embed.add_field(name= '**__Crosshair__**' , value= '**Crosshair Code:** ' + crosshair_code , inline=False)
   embed.add_field(name= '**__Gear__**' , value= '**Monitor:** ' + monitor + '\n**Mouse:** ' + mouse + '\n**Keyboard:** ' + keyboard + '\n**Headset:** ' + headset, inline=False)
-  embed.add_field(name= '**Sponsored by: ' , value= 'Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5' + '%' + ' off', inline=False)
+  embed.add_field(name= '**Sponsored by:** ' , value= 'Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5' + '%' + ' off', inline=False)
   # embed.add_field(name= '**__Profiles__**', value= '**Faceit:** ' + faceit + '\n**ESEA:** ' + esea, inline=False)
 
   await ctx.send(embed=embed)
@@ -340,7 +340,6 @@ async def Rules(ctx):
 
   msg = await ctx.send(embed=embed)
   await msg.add_reaction('<:agree:805537012161314816>')
-'''
  #########################################################################################
  #########################################################################################
  #########################################################################################
@@ -406,6 +405,6 @@ async def resume(ctx):
 async def stop(ctx):
   voice = discord.utils.get(bot.voice_clients, guild=ctx.guild)
   voice.stop()
-'''
+
 
 bot.run('ODA1NDYxMzY4MDU1NTI5NTAy.YBbOWg.ga2Xakk4ddaD3m0x7sBN_UIn2GQ')
