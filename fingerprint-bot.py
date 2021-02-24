@@ -92,7 +92,7 @@ async def cs(ctx,player='ultrafy'):
     colour = discord.Colour.teal()
   )
 
-  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza | Sponsored by: TINTFORMULAE')
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza ')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
   embed.add_field(name= '**__Player:__**' , value= gamertag, inline=False)
   embed.add_field(name= '**__Player Information__**' , value= '**FullName:** ' + fullname + '\n**Player Team:** ' + team + '\n**Age:** ' + age, inline=False)
@@ -100,6 +100,7 @@ async def cs(ctx,player='ultrafy'):
   embed.add_field(name= '**__Monitor Settings__**' , value= '**Resolution:** ' + resolution + '\n**Aspect Ratio:** ' + aspect_ratio + '\n**Scaling Mode:** ' + scaling_mode + '\n**Hz:** ' +monitor_hz, inline=False)
   embed.add_field(name= '**__Crosshair__**' , value= '**Crosshair Code:** ' + crosshair_code , inline=False)
   embed.add_field(name= '**__Gear__**' , value= '**Monitor:** ' + monitor + '\n**Mouse:** ' + mouse + '\n**Keyboard:** ' + keyboard + '\n**Headset:** ' + headset, inline=False)
+  embed.add_field(name= '**Sponsored by: ' , value= 'Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5' + '%' + ' off', inline=False)
   # embed.add_field(name= '**__Profiles__**', value= '**Faceit:** ' + faceit + '\n**ESEA:** ' + esea, inline=False)
 
   await ctx.send(embed=embed)
@@ -152,7 +153,7 @@ async def fortnite(ctx,player='ultrafy'):
     colour = discord.Colour.teal()
   )
 
-  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza | Sponsored by: TINTFORMULAE')
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza ')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
   embed.add_field(name= '**__Player:__**' , value= gamertag, inline=False)
   embed.add_field(name= '**__Player Information__**' , value= '**FullName:** ' + fullname + '\n**Player Team:** ' + team + '\n**Age:** ' + age, inline=False)
@@ -160,6 +161,7 @@ async def fortnite(ctx,player='ultrafy'):
   embed.add_field(name= '**__Monitor Settings__**' , value= '**Resolution:** ' + resolution + '\n**Color Blind Mode:** ' + color_blind_mode + '\n**Brightness:** ' + brightness + '\n**Hz:** ' +monitor_hz, inline=False)
   embed.add_field(name= '**__Fortnite Binds__**' , value= '**Ramp Bind:** ' + ramp_bind + '\n**Cone Bind:** ' + cone_bind + '\n**Floor Bind:** ' + floor_bind + '\n**Wall Bind:** ' + wall_bind , inline=False)
   embed.add_field(name= '**__Gear__**' , value= '**Monitor:** ' + monitor + '\n**Mouse:** ' + mouse + '\n**Keyboard:** ' + keyboard + '\n**Headset:** ' + headset, inline=False)
+  embed.add_field(name= '**Sponsored by: ' , value= 'Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5' + '%' + ' off', inline=False)
   # embed.add_field(name= '**__Profiles__**', value= '**Faceit:** ' + faceit + '\n**ESEA:** ' + esea, inline=False)
 
   await ctx.send(embed=embed)
@@ -187,12 +189,13 @@ async def fingerprintcommands(ctx):
     colour = discord.Colour.teal()
   )
 
-  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza | Sponsored by: TINTFORMULAE')
+  embed.set_footer(text='Website: https://fingerprintza.com/ | Twitter: @fingerprintza ')
   embed.set_thumbnail(url='https://imgur.com/P1msmYz.png')
   embed.add_field(name= '**__.players:__**' , value= 'Shows All CS Players In Database', inline=False)
   embed.add_field(name= '**__.fortnite + "player name"__**' , value= 'Shows Fortnite Player Specified After .fortnite Info', inline=False)
   embed.add_field(name= '**__.cs + "player name"__**' , value= 'Shows CS Player Specified After .cs Info', inline=False)
   embed.add_field(name= '**__.clear__** + **__amount__**' , value= 'Clears Specific amount of lines', inline=False)
+  embed.add_field(name= '**Sponsored by: ' , value= 'Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5' + '%' + ' off', inline=False)
 
 
   await ctx.send(embed=embed)
@@ -319,6 +322,7 @@ async def Rules(ctx):
   embed.add_field(name='Rule #5: **__Discord Terms of Service__**', value='You must be at least 13 years old to use Discord, and raiding, illegal activities, attempting to obtain personal information, and all other prohibited acts will result in punishment.', inline=False)
   embed.add_field(name='Rule #6: **__Do not spam!__**', value='Avoid excessive and/or unnecessary messages, caps, emojis, text walls, spoiler messages, chains, images and @mentions. This includes unwarranted tags and derailing conversations.', inline=False)
   embed.add_field(name='Rule #7: **__Be respectful and accepting towards other members.__**', value='No instances of personal attacks, disrespect, exclusion, harassment, slurs, doxxing, or arguments should occur here. Treat everyone as if they\'re your equal. Don\'t try to act like a staff member or as if you have staffing ability if you don\'t have the role.', inline=False)
+  embed.add_field(name= '**Sponsored by: ' , value= 'Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5' + '%' + ' off', inline=False)
 
 
   msg = await ctx.send(embed=embed)
