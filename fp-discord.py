@@ -22,7 +22,7 @@ emojiF = "<:Fingerprint:813383545065439253>"
 @bot.event
 async def on_ready():
     change_status.start()
-    print("Main Fingerprint ZA Bot is Online !")
+    print("The Bot Fingerprint ZA Has Started...")
 
 
 # Gets Information from Firebase
