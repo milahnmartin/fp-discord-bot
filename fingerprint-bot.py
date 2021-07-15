@@ -1,12 +1,9 @@
+import time
 import discord
-import requests
-import json
 import pyrebase
 from discord import Color
 from discord.ext import commands, tasks
 from itertools import cycle
-import time
-import os
 
 
 # Set Prefix
@@ -26,24 +23,6 @@ emojiF = "<:Fingerprint:813383545065439253>"
 async def on_ready():
     change_status.start()
     print("Main Fingerprint ZA Bot is Online !")
-
-
-# # On error Command
-# @bot.event
-# async def on_command_error(ctx, error):
-#     if isinstance(error, commands.MissingPermissions):
-#         await ctx.send(
-#             "You don't have the Permision to use this command 😕", delete_after=5
-#         )
-#         await ctx.message.delete()
-#     elif isinstance(error, commands.MissingRequiredArgument):
-#         await ctx.send("Please enter all the required arguements ⌨️", delete_after=5)
-#         await ctx.message.delete()
-#     elif isinstance(error, commands.CommandInvokeError):
-#         await ctx.send("Player Does not exist 😕", delete_after=5)
-#         await ctx.message.delete()
-#     else:
-#         raise error
 
 
 # Gets Information from Firebase
@@ -363,25 +342,6 @@ async def fingerprintcommands(ctx):
     await ctx.send(embed=embed)
 
 
-# Auto Role Command
-@bot.event
-async def on_raw_reaction_add(payload):
-    message_id = payload.message_id
-    if message_id == 805537263617703996:
-        guild_id = payload.guild_id
-        guild = discord.utils.find(lambda g: g.id == guild_id, bot.guilds)
-
-        if payload.emoji.name == "Agree":
-            role = discord.utils.get(guild.roles, name="Members")
-
-        if role is not None:
-            member = payload.member
-            if member is not None:
-                await member.add_roles(role)
-                print("Done")
-            else:
-                print("Member not found.")
-
 
 # Purge command
 @bot.command(aliases=["p", "purge", "delete"])
@@ -400,41 +360,7 @@ async def clear(ctx, amount=3):
     await ctx.send(embed=embed, delete_after=3.0)
 
 
-# Testing Command
-@bot.command()
-async def Testing(ctx):
-    msg = await ctx.send(":Statusgreen:")
-    await msg.add_reaction("<:Statusgreen:805475295573442560>")
 
-
-# Testing2
-@bot.command()
-async def Testing2(ctx):
-    await ctx.send("Busy fetching data!", delete_after=3.0)
-
-    embed = discord.Embed(
-        title="Your Title",
-        description="Your Description [Twitter](https://twitter.com/MrT1TAN)",
-        colour=discord.Colour.blue(),
-    )
-    await ctx.send(embed=embed)
-
-
-# StatusgreenCommand
-@bot.command()
-@commands.has_permissions(manage_messages=True)
-async def Statusgreen(ctx):
-    channel = bot.get_channel(805159215370076191)
-    embed = discord.Embed(
-        title="ZA FingerPrint Status", description="", colour=discord.Colour.green()
-    )
-    embed.set_thumbnail(url="https://imgur.com/P1msmYz.png")
-    embed.add_field(
-        name="**Status:**",
-        value="\n **All ZA FingerPrint Services are currently running** 🟢 ",
-        inline=True,
-    )
-    await channel.send(embed=embed)
 
 
 @bot.command()
@@ -456,21 +382,6 @@ async def invite(ctx):
     await ctx.send(embed=embed)
 
 
-# StatusredCommand
-@bot.command()
-@commands.has_permissions(manage_messages=True)
-async def Statusred(ctx):
-    channel = bot.get_channel(805159215370076191)
-    embed = discord.Embed(
-        title="ZA FingerPrint Status", description="", colour=discord.Colour.red()
-    )
-    embed.set_thumbnail(url="https://imgur.com/P1msmYz.png")
-    embed.add_field(
-        name="**Status:**",
-        value="\n **Some ZA FingerPrint Services are currently not Running. Don't worry. The team is busy working on a fix** 🔴 ",
-        inline=True,
-    )
-    await channel.send(embed=embed)
 
 
 # Set Bot status
@@ -489,7 +400,7 @@ async def Rules(ctx):
         colour=discord.Colour.teal(),
     )
 
-    embed.set_footer(text="Made by MrT1TAN#3244")
+    embed.set_footer(text="Made by Fingerprint ZA")
     embed.set_thumbnail(url="https://imgur.com/P1msmYz.png")
     embed.set_author(name="MrT1TAN#3244", icon_url="https://imgur.com/YoOQFrW.png")
     embed.add_field(
@@ -539,11 +450,6 @@ async def Rules(ctx):
     await msg.add_reaction("<:agree:805537012161314816>")
 
 
-#########################################################################################
-#########################################################################################
-#########################################################################################
-#########################################################################################
-# Music
 
 
 bot.run("ODA1NDYxMzY4MDU1NTI5NTAy.YBbOWg.ga2Xakk4ddaD3m0x7sBN_UIn2GQ")
