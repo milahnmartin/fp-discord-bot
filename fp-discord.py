@@ -41,6 +41,7 @@ config = {
 # Embedded Player info
 @bot.command()
 async def cs(ctx, player="ultrafy"):
+    function_hit('cs')
     firebase = pyrebase.initialize_app(config)
     database = firebase.database()
     rootRef = database.child("counterstrike/pro").get()
@@ -136,19 +137,14 @@ async def cs(ctx, player="ultrafy"):
         + headset,
         inline=False,
     )
-    embed.add_field(
-        name="**__Sponsors: __** ",
-        value="- Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5"
-        + "%"
-        + " off \n - FrostByte Network | @FrostByteZA",
-        inline=False,
-    )
+    
 
     await ctx.send(embed=embed)
 
 
 @bot.command()
 async def fortnite(ctx, player="ultrafy"):
+    function_hit('fortnite')
     firebase = pyrebase.initialize_app(config)
     database = firebase.database()
     rootRef = database.child("fortnite/pro").get()
@@ -331,13 +327,6 @@ async def fingerprintcommands(ctx):
         value="Clears Specific amount of lines",
         inline=False,
     )
-    embed.add_field(
-        name="**__Sponsors: __** ",
-        value="- Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5"
-        + "%"
-        + " off \n - FrostByte Network | @FrostByteZA",
-        inline=False,
-    )
 
     await ctx.send(embed=embed)
 
@@ -346,6 +335,7 @@ async def fingerprintcommands(ctx):
 # Purge command
 @bot.command(aliases=["p", "purge", "delete"])
 async def clear(ctx, amount=3):
+    function_hit('clear')
     await ctx.channel.purge(limit=amount)
     embed = discord.Embed(
         title="FingerPrintZa",
@@ -365,13 +355,14 @@ async def clear(ctx, amount=3):
 
 @bot.command()
 async def invite(ctx):
+    function_hit('invite')
     embed = discord.Embed(
         title="ZA FingerPrint Status",
         description="Invite link to invite the bot to your server",
         colour=discord.Colour.teal(),
     )
     embed.set_footer(
-        text="Website: https://fingerprintza.com/ | Twitter: @fingerprintza | Sponsored by: TINTFORMULAE"
+        text="Website: https://fingerprintza.com/ | Twitter: @fingerprintza"
     )
     embed.set_thumbnail(url="https://imgur.com/P1msmYz.png")
     embed.add_field(
@@ -390,65 +381,9 @@ async def change_status():
     await bot.change_presence(activity=discord.Game(next(status)))
 
 
-# Discord Rules Embed
-@bot.command()
-@commands.has_permissions(administrator=True)
-async def Rules(ctx):
-    embed = discord.Embed(
-        title="ZaFingerPrint Server Rules",
-        description="Please Respect and Obey the Server",
-        colour=discord.Colour.teal(),
-    )
 
-    embed.set_footer(text="Made by Fingerprint ZA")
-    embed.set_thumbnail(url="https://imgur.com/P1msmYz.png")
-    embed.set_author(name="MrT1TAN#3244", icon_url="https://imgur.com/YoOQFrW.png")
-    embed.add_field(
-        name="Rule #1: **__NSFW Content__**",
-        value="Any form of NSFW content is strictly forbidden, if you are found posting content of this nature, you will be banned on the spot.",
-        inline=False,
-    )
-    embed.add_field(
-        name="Rule #2: **__Advertising__**",
-        value="No advertising of any kind (Discord, YouTube, Twitter, Etc). If you are found advertising, this is also grounds for an immediate ban.",
-        inline=False,
-    )
-    embed.add_field(
-        name="Rule #3: **__Defamation Behavior__**",
-        value="Absolutely no Racist, Sexist, or otherwise degrading behavior will be tolerated. Anyone displaying this behavior will be banned.",
-        inline=False,
-    )
-    embed.add_field(
-        name="Rule #4: **__Mentions__**",
-        value="Repeated pings will result in a mute, kick, or even ban.",
-        inline=False,
-    )
-    embed.add_field(
-        name="Rule #5: **__Discord Terms of Service__**",
-        value="You must be at least 13 years old to use Discord, and raiding, illegal activities, attempting to obtain personal information, and all other prohibited acts will result in punishment.",
-        inline=False,
-    )
-    embed.add_field(
-        name="Rule #6: **__Do not spam!__**",
-        value="Avoid excessive and/or unnecessary messages, caps, emojis, text walls, spoiler messages, chains, images and @mentions. This includes unwarranted tags and derailing conversations.",
-        inline=False,
-    )
-    embed.add_field(
-        name="Rule #7: **__Be respectful and accepting towards other members.__**",
-        value="No instances of personal attacks, disrespect, exclusion, harassment, slurs, doxxing, or arguments should occur here. Treat everyone as if they're your equal. Don't try to act like a staff member or as if you have staffing ability if you don't have the role.",
-        inline=False,
-    )
-    embed.add_field(
-        name="**__Sponsors: __** ",
-        value="- Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5"
-        + "%"
-        + " off \n - FrostByte Network | @FrostByteZA",
-        inline=False,
-    )
-
-    msg = await ctx.send(embed=embed)
-    await msg.add_reaction("<:agree:805537012161314816>")
-
+def function_hit(information:str)->None:
+    print("Command ", information, " Was Hit !")
 
 
 
