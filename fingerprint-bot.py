@@ -277,13 +277,13 @@ async def fortnite(ctx, player="ultrafy"):
         + headset,
         inline=False,
     )
-    # embed.add_field(
-    #     name="**__Sponsors: __** ",
-    #     value="- Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5"
-    #     + "%"
-    #     + " off \n - FrostByte Network | @FrostByteZA",
-    #     inline=False,
-    # )
+    embed.add_field(
+        name="**__Sponsors: __** ",
+        value="- Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5"
+        + "%"
+        + " off \n - FrostByte Network | @FrostByteZA",
+        inline=False,
+    )
 
     await ctx.send(embed=embed)
 
@@ -352,13 +352,13 @@ async def fingerprintcommands(ctx):
         value="Clears Specific amount of lines",
         inline=False,
     )
-    # embed.add_field(
-    #     name="**__Sponsors: __** ",
-    #     value="- Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5"
-    #     + "%"
-    #     + " off \n - FrostByte Network | @FrostByteZA",
-    #     inline=False,
-    # )
+    embed.add_field(
+        name="**__Sponsors: __** ",
+        value="- Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5"
+        + "%"
+        + " off \n - FrostByte Network | @FrostByteZA",
+        inline=False,
+    )
 
     await ctx.send(embed=embed)
 
@@ -445,7 +445,7 @@ async def invite(ctx):
         colour=discord.Colour.teal(),
     )
     embed.set_footer(
-        text="Website: https://fingerprintza.com/ | Twitter: @fingerprintza"
+        text="Website: https://fingerprintza.com/ | Twitter: @fingerprintza | Sponsored by: TINTFORMULAE"
     )
     embed.set_thumbnail(url="https://imgur.com/P1msmYz.png")
     embed.add_field(
@@ -527,11 +527,13 @@ async def Rules(ctx):
         value="No instances of personal attacks, disrespect, exclusion, harassment, slurs, doxxing, or arguments should occur here. Treat everyone as if they're your equal. Don't try to act like a staff member or as if you have staffing ability if you don't have the role.",
         inline=False,
     )
-    # embed.add_field(
-    #     name="**__Sponsors: __** ",
-    #     value="FrostByte Network | @FrostByteZA",
-    #     inline=False,
-    # )
+    embed.add_field(
+        name="**__Sponsors: __** ",
+        value="- Tint Formulae | #FindYourHiddenEnergy | Use code fingerprint for 5"
+        + "%"
+        + " off \n - FrostByte Network | @FrostByteZA",
+        inline=False,
+    )
 
     msg = await ctx.send(embed=embed)
     await msg.add_reaction("<:agree:805537012161314816>")
