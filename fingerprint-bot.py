@@ -28,22 +28,22 @@ async def on_ready():
     print("Main Fingerprint ZA Bot is Online !")
 
 
-# On error Command
-@bot.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.MissingPermissions):
-        await ctx.send(
-            "You don't have the Permision to use this command 😕", delete_after=5
-        )
-        await ctx.message.delete()
-    elif isinstance(error, commands.MissingRequiredArgument):
-        await ctx.send("Please enter all the required arguements ⌨️", delete_after=5)
-        await ctx.message.delete()
-    elif isinstance(error, commands.CommandInvokeError):
-        await ctx.send("Player Does not exist 😕", delete_after=5)
-        await ctx.message.delete()
-    else:
-        raise error
+# # On error Command
+# @bot.event
+# async def on_command_error(ctx, error):
+#     if isinstance(error, commands.MissingPermissions):
+#         await ctx.send(
+#             "You don't have the Permision to use this command 😕", delete_after=5
+#         )
+#         await ctx.message.delete()
+#     elif isinstance(error, commands.MissingRequiredArgument):
+#         await ctx.send("Please enter all the required arguements ⌨️", delete_after=5)
+#         await ctx.message.delete()
+#     elif isinstance(error, commands.CommandInvokeError):
+#         await ctx.send("Player Does not exist 😕", delete_after=5)
+#         await ctx.message.delete()
+#     else:
+#         raise error
 
 
 # Gets Information from Firebase
