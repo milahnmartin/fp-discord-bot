@@ -82,7 +82,7 @@ async def cs(ctx, player="ultrafy"):
     )
 
     embed.set_footer(
-        text="Website: https://fingerprintza.com/ | Twitter: @fingerprintza "
+        text="Website: https://fingerprintza.comblahsad/ | Twitter: @fingerprintza "
     )
     embed.set_thumbnail(url="https://imgur.com/P1msmYz.png")
     embed.add_field(name="**__Player:__**", value=gamertag, inline=False)
