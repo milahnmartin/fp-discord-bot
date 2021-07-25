@@ -29,10 +29,11 @@ async def faceit(ctx,player='Ultrafy'):
         kd = data["Average K/D Ratio"]
 
         for i in recent:
-            if i == '0':
+            if i == '1':
                 wins_status.append('W')
             else:
                 wins_status.append('L')
+
 
         await ctx.send("Busy fetching data!", delete_after=3.0)
         embed = discord.Embed(
