@@ -13,7 +13,9 @@ bot = commands.Bot(command_prefix=".")
 
 @bot.command()
 async def faceit(ctx,player='Ultrafy'):
+
     try:
+        wins_status = []
         my_player = Faceit(player)
         data = my_player.get_player_stats()
         wins = data["Wins"]
@@ -25,6 +27,12 @@ async def faceit(ctx,player='Ultrafy'):
         headshot = data["Total Headshots %"]
         avgheadshot = data["Average Headshots %"]
         kd = data["Average K/D Ratio"]
+
+        for i in recent:
+            if i == '0':
+                wins_status.append('W')
+            else:
+                wins_status.append('L')
 
         await ctx.send("Busy fetching data!", delete_after=3.0)
         embed = discord.Embed(
@@ -41,7 +49,7 @@ async def faceit(ctx,player='Ultrafy'):
         embed.add_field(name="**__Wins:__**", value=wins, inline=False)
         embed.add_field(name="**__Matches:__**", value=matches, inline=False)
         embed.add_field(name="**__Win Rate:__**", value=winr, inline=False)
-        embed.add_field(name="**__Recent Games:__**", value=recent, inline=False)
+        embed.add_field(name="**__Recent Games:__**", value=wins_status, inline=False)
         embed.add_field(name="**__Longest Win Streak:__**", value=longest, inline=False)
         embed.add_field(name="**__Current Win Streak:__**", value=current, inline=False)
         embed.add_field(name="**__Total Headshots:__**", value=headshot, inline=False)
