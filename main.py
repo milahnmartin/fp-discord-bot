@@ -2,14 +2,27 @@ import time
 import discord
 from discord import Color
 from discord.ext import commands, tasks
-import requests
-from requests import api
-from requests.api import head
+from itertools import cycle
 from api import *
 
-# Set Prefix
 bot = commands.Bot(command_prefix=".")
 
+status = cycle(
+    [
+        "https://fingerprintza.com/",
+        "Visit our Twitter @fingerprintza",
+        "Register Today, fingerprintza.com/register-section",
+        ".commands",
+    ]
+)
+@tasks.loop(seconds=15)
+async def change_status():
+    await bot.change_presence(activity=discord.Game(next(status)))
+    
+@bot.event
+async def on_ready():
+    change_status.start()
+    print("The Bot Fingerprint ZA Has Started...")
 
 @bot.command()
 async def faceit(ctx,player='Ultrafy'):

@@ -1,12 +1,7 @@
-from os import unlink
-import time
-import discord
-from discord import Color
-from discord.ext import commands, tasks
 import requests
 from requests import api
 from requests.api import head
-from flask import Flask
+
 
 
 my_api_key = "4ad6ab88-7518-4d1a-a3d2-f71947233c6c"
