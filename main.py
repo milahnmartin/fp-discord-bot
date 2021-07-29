@@ -15,6 +15,8 @@ status = cycle(
         ".commands",
     ]
 )
+emojiFinger = "<:Fingerprint:813383545065439253>"
+emojiOne = "<>"
 @tasks.loop(seconds=15)
 async def change_status():
     await bot.change_presence(activity=discord.Game(next(status)))
@@ -85,5 +87,25 @@ async def faceit(ctx,player='Ultrafy'):
         await ctx.send(embed=embed)
 
 
+
+@bot.command(aliases=["commands"])
+async def fingerprintcommands(ctx):
+    await ctx.send("Getting Commands!", delete_after=3.0)
+    embed = discord.Embed(
+        title="Commands",
+        description="All Available Commands.",
+        colour=discord.Colour.teal(),
+    )
+
+    embed.set_footer(
+        text="Website: https://fingerprintza.com/ | Twitter: @fingerprintza "
+    )
+    embed.set_thumbnail(url="https://imgur.com/P1msmYz.png")
+    embed.add_field(
+        name="**__.faceit:__** {player name}",
+        value="Shows Faceit Stats of player",
+        inline=False,
+    )
+    await ctx.send(embed=embed)
 
 bot.run("ODA1NDYxMzY4MDU1NTI5NTAy.YBbOWg.5R4C0JzxrIaNl3jmZYpNR6E8_lc")
