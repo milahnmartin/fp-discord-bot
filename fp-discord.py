@@ -74,10 +74,10 @@ async def cs(ctx, player="ultrafy"):
     # except KeyError:
     # await ctx.send('User ' + myplayer + ' does not exist, contact support !')
 
-    await ctx.send("Busy fetching data!", delete_after=3.0)
+    await ctx.send("Busy fetching fpdata!", delete_after=3.0)
     embed = discord.Embed(
         title="Player Information",
-        description="All Available data about the player is stated below.",
+        description="All Available fpdata about the player is stated below.",
         colour=discord.Colour.teal(),
     )
 
@@ -184,10 +184,10 @@ async def fortnite(ctx, player="ultrafy"):
     # except KeyError:
     # await ctx.send('User ' + myplayer + ' does not exist, contact support !')
 
-    await ctx.send("Busy fetching data!", delete_after=3.0)
+    await ctx.send("Busy fetching fpdata!", delete_after=3.0)
     embed = discord.Embed(
         title="Player Information",
-        description="All Available data about the player is stated below.",
+        description="All Available fpdata about the player is stated below.",
         colour=discord.Colour.teal(),
     )
 
