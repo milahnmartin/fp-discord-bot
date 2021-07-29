@@ -77,28 +77,26 @@ def main():
                 await ctx.send(embed=embed)
             else:
                 data = data['segments']
-                map_name = data['label']
+                map_name = map.lower()
                 data = data[0]
                 map_stats = data['stats']
-                AverageAssists = maps_stats['Average Assists']
-                AverageDeaths = maps_stats['Average Deaths']
-                AverageHeadshots = maps_stats['Average Headshots %']
-                AverageKDRatio = maps_stats['Average K/D Ratio']
-                AverageKills = maps_stats['Average Kills']
-                AverageMVP = maps_stats['Average MVPs']
-                AveragePentaKills = maps_stats['Average Penta Kills']
-                AverageQuadroKills = maps_stats['Average Quadro Kills']
-                AverageTripleKills = maps_stats['Average Triple Kills']
-                DeathsTotal = maps_stats['Deaths']
-                HeadshotsTotal = maps_stats['Headshots']
-                KillsTotal = maps_stats['Kills']
-                TotalMatches = maps_stats['Matches']
-                MVPsTotal = maps_stats['MVPs']
-                RoundsTotal = maps_stats['Rounds']
-                WinsTotal = maps_stats['Wins']
-
-
-
+                AverageAssists = map_stats['Average Assists']
+                AverageDeaths = map_stats['Average Deaths']
+                AverageHeadshots = map_stats['Average Headshots %']
+                AverageKDRatio = map_stats['Average K/D Ratio']
+                AverageKills = map_stats['Average Kills']
+                AverageMVP = map_stats['Average MVPs']
+                AveragePentaKills = map_stats['Average Penta Kills']
+                AverageQuadroKills = map_stats['Average Quadro Kills']
+                AverageTripleKills = map_stats['Average Triple Kills']
+                DeathsTotal = map_stats['Deaths']
+                HeadshotsTotal = map_stats['Headshots']
+                KillsTotal = map_stats['Kills']
+                TotalMatches = map_stats['Matches']
+                MVPsTotal = map_stats['MVPs']
+                RoundsTotal = map_stats['Rounds']
+                WinsTotal = map_stats['Wins']
+    
                 embed = discord.Embed(
                     title="Player Map information",
                     description="All Available fpdata about the player's map is stated below.",
@@ -110,7 +108,7 @@ def main():
                 )
                 embed.set_thumbnail(url="https://imgur.com/P1msmYz.png")
                 embed.add_field(name="**__Player:__**", value=player, inline=False)
-                embed.add_field(name="**__Map:__**", value=map_name, inline=False)
+                embed.add_field(name="**__Map:__**", value=map_name[0].upper()+map_name[1:], inline=False)
                 embed.add_field(name="**__Average Assists:__**", value=AverageAssists, inline=False)
                 embed.add_field(name="**__Average Deaths:__**", value=AverageDeaths, inline=False)
                 embed.add_field(name="**__Average Headshot %:__**", value=AverageHeadshots, inline=False)
