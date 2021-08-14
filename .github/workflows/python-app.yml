@@ -39,8 +39,9 @@ jobs:
 
       needs: build
 
-      - name execute py script
+      - name: execute py script
         run: |
+        python3 main.py
 
 
 
