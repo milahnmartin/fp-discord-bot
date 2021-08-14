@@ -11,7 +11,6 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-
 def create_log_sql(pUser:str,pCommand:str,pTarget:str) -> None:
     current_time = date.today()
     global mycursor
