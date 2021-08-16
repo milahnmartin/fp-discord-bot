@@ -11,6 +11,7 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
+
 def create_log_sql(pUser:str,pCommand:str,pTarget:str) -> None:
     current_time = date.today()
     global mycursor
@@ -19,6 +20,7 @@ def create_log_sql(pUser:str,pCommand:str,pTarget:str) -> None:
     mycursor.execute(query,parameters)
     mydb.commit()
     print("[RECORD WAS CREATED] -> ",current_time)
+
 
 def create_log_webhook(pUser:str,pCommand:str,pTarget:str) -> None:
     pass
